@@ -4,9 +4,9 @@ import os
 import random
 import sys
 
-from fsdet.utils import io
+from fsdet.utils import io as utils_io
 
-PROJ_ROOT = str(io.get_project_root())
+PROJ_ROOT = str(utils_io.get_project_root())
 # TODO: This has to be injected either as an environment variable or a parameter.
 DATASET_ROOT = os.path.join(PROJ_ROOT, 'datasets/socket_plates')
 ANN_ROOT = os.path.join(DATASET_ROOT, 'annotations')

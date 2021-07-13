@@ -11,7 +11,7 @@ import contextlib
 from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.structures import BoxMode
 
-from fsdet.utils import io
+from fsdet.utils import io as utils_io
 
 """
 This file contains functions to parse COCO-format annotations into dicts in "Detectron2 format".
@@ -19,7 +19,7 @@ This file contains functions to parse COCO-format annotations into dicts in "Det
 
 __all__ = ["register_meta_coco"]
 
-PROJ_ROOT = str(io.get_project_root())
+PROJ_ROOT = str(utils_io.get_project_root())
 
 # TODO: This has to be injected either as an environment variable or a parameter.
 DATASET_ROOT = os.path.join(PROJ_ROOT, 'datasets/socket_plates')

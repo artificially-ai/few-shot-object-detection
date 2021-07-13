@@ -57,7 +57,7 @@ Unfortunately, due to the way the Detectron2 package is setup, `PyTorch` must be
 Detectron2 to the Conda environment file won't do it for us. Please, to proceed, execute the command below:
 
 ```shell script
-conda instal -c conda-forge detectron2
+conda install -c conda-forge detectron2
 ``` 
 
 This is enough to get you all the dependencies you need.
