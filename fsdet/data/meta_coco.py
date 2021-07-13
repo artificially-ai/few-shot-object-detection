@@ -1,19 +1,29 @@
+import io
+import os
+
 import numpy as np
+
 from fvcore.common.file_io import PathManager
 from pycocotools.coco import COCO
 
 import contextlib
-import io
-import os
+
 from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.structures import BoxMode
+
+from fsdet.utils import io
 
 """
 This file contains functions to parse COCO-format annotations into dicts in "Detectron2 format".
 """
 
-
 __all__ = ["register_meta_coco"]
+
+PROJ_ROOT = str(io.get_project_root())
+
+# TODO: This has to be injected either as an environment variable or a parameter.
+DATASET_ROOT = os.path.join(PROJ_ROOT, 'datasets/socket_plates')
+os.chdir(PROJ_ROOT)
 
 
 def load_coco_json(json_file, image_root, metadata, dataset_name):
@@ -37,7 +47,7 @@ def load_coco_json(json_file, image_root, metadata, dataset_name):
     is_shots = "shot" in dataset_name
     if is_shots:
         fileids = {}
-        split_dir = os.path.join("datasets", "cocosplit")
+        split_dir = DATASET_ROOT
         if "seed" in dataset_name:
             shot = dataset_name.split("_")[-2].split("shot")[0]
             seed = int(dataset_name.split("_seed")[-1])
@@ -46,7 +56,7 @@ def load_coco_json(json_file, image_root, metadata, dataset_name):
             shot = dataset_name.split("_")[-1].split("shot")[0]
         for idx, cls in enumerate(metadata["thing_classes"]):
             json_file = os.path.join(
-                split_dir, "full_box_{}shot_{}_trainval.json".format(shot, cls)
+                split_dir, "full_box_{}shot_{}_train.json".format(shot, cls)
             )
             json_file = PathManager.get_local_path(json_file)
             with contextlib.redirect_stdout(io.StringIO()):
@@ -117,7 +127,6 @@ def load_coco_json(json_file, image_root, metadata, dataset_name):
                     objs.append(obj)
             record["annotations"] = objs
             dataset_dicts.append(record)
-
     return dataset_dicts
 
 
@@ -138,6 +147,5 @@ def register_meta_coco(name, metadata, imgdir, annofile):
         json_file=annofile,
         image_root=imgdir,
         evaluator_type="coco",
-        dirname="datasets/coco",
         **metadata,
     )

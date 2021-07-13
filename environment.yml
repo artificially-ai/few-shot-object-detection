@@ -1,5 +1,6 @@
 name: wfsdet
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - python=3.9
@@ -19,5 +20,7 @@ dependencies:
     - opencv-python
     - torch
     - torchvision
-    - Detectron2
     - lvis
+    - omegaconf>=2
+    - fvcore==0.1.4
+    - iopath
