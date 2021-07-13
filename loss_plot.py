@@ -3,13 +3,13 @@ import os
 import json
 import matplotlib.pyplot as plt
 
-from fsdet.utils import io
+from fsdet.utils import io as utils_io
 
 
 # After every experiment you have to delete the content of the 'experiment_folder'
 # otherwise it also displays the other experiments in the plot
 
-PROJ_ROOT = str(io.get_project_root())
+PROJ_ROOT = str(utils_io.get_project_root())
 experiment_folder = os.path.join(PROJ_ROOT, 'checkpoints/coco/faster_rcnn/faster_rcnn_R_101_FPN_base')
 
 
