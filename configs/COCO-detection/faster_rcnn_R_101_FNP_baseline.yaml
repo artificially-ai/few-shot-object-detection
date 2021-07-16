@@ -7,7 +7,7 @@ MODEL:
   ROI_HEADS:
     NUM_CLASSES: 12 #base classes
 DATASETS:
-  TEST: ('custom_test_all_aop',)
+  TEST: ('custom_test_base_aop',)
 SOLVER:
   BASE_LR: 0.02
   IMS_PER_BATCH: 2

@@ -19,8 +19,8 @@ COCO_CATEGORIES = [
 
 # Novel COCO categories
 COCO_NOVEL_CATEGORIES = [
-    {'supercategory': '', 'id': 2, 'name': 'AOP_TRAS1000'},
-    {'supercategory': '', 'id': 7, 'name': 'SPLITTER_POA_01_zonder_kapje'},
+    {'supercategory': '', 'id': 3, 'name': 'AOP_TRAS1000'},
+    {'supercategory': '', 'id': 8, 'name': 'SPLITTER_POA_01_zonder_kapje'}
 ]
 
 

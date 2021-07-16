@@ -58,9 +58,9 @@ class COCOEvaluator(DatasetEvaluator):
         self._is_splits = "all" in dataset_name or "base" in dataset_name \
             or "novel" in dataset_name
         self._base_classes = [
-          1, 3, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15,
+          1, 3, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15
         ]
-        self._novel_classes = [2, 7,]
+        self._novel_classes = [2, 7]
 
         json_file = PathManager.get_local_path(self._metadata.json_file)
         with contextlib.redirect_stdout(io.StringIO()):
@@ -221,12 +221,10 @@ class COCOEvaluator(DatasetEvaluator):
 
         # the standard metrics
         results = {
-            metric: float(coco_eval.stats[idx] * 100) \
-                for idx, metric in enumerate(metrics)
+            metric: float(coco_eval.stats[idx] * 100) for idx, metric in enumerate(metrics)
         }
         self._logger.info(
-            "Evaluation results for {}: \n".format(iou_type) + \
-                create_small_table(results)
+            "Evaluation results for {}: \n".format(iou_type) + create_small_table(results)
         )
 
         if class_names is None or len(class_names) <= 1:
