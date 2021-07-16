@@ -72,23 +72,10 @@ After you have generated the novel class instances transfer the .json files from
 
 ## Part 2. Training Your `wfsdet` Model
 
-__Step 1:__ Open your terminal, and navigate to the ```fsdet-custom``` folder. When you download the package, and store
-it in your `home` folder, you can use the following bash command: 
+__Step 1:__ From inside the project directory, type the following bash command in your terminal: 
 
 ```shell script
-cd fsdet-custom
-```
-
-To ensure the fsdet-custom package is found, type the following command in your terminal: 
-
-```shell script
-export PYTHONPATH=$PYTHONPATH:.
-```
-
-__Step 2:__ To train the base classes, type the following bash command in your terminal: 
-
-```shell script
-python -m tools.train_net --num-gpus 0 \
+python -m tools.train_net --num-gpus 1 \
         --config-file configs/COCO-detection/faster_rcnn_R_101_FPN_base.yaml
 ```
 
